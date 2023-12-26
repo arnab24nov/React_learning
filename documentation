@@ -1,0 +1,15 @@
+<!--
+** Header
+    - Logo
+    - Nav Items
+** Body
+    - Search Box
+    - Restaurent Container
+      - Restaurent Card
+        - Image, Name, Cuisins, Star Rating, ETA
+*** Footer
+    - Copyrights
+    - Links
+    - Address
+    - Contacts
+    -->
