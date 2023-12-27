@@ -29,9 +29,17 @@
   padding: 10px;
   cursor: pointer;
 }
-.login-out {
+.login-out,
+.toggle-mode {
   padding: 5px;
   cursor: pointer;
+  margin-right: 5px;
+}
+.dark-mode {
+  background-color: black;
+}
+.light-mode {
+  background-color: #fff;
 }
 .search {
   padding: 10px;
