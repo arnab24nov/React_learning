@@ -1,23 +1,16 @@
+import { INSTA_LOGO } from "../utils/constant";
+import { FB_LOGO } from "../utils/constant";
+import { LINKEDIN_LOGO } from "../utils/constant";
+import { TW_LOGO } from "../utils/constant";
+
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-logo">
-        <img
-          src="https://tse1.mm.bing.net/th?id=OIP.vpfKKTBdMeS7qoPpmfLTxQAAAA&pid=Api&P=0&h=180"
-          alt="instagram logo"
-        />
-        <img
-          src="https://tse4.mm.bing.net/th?id=OIP.H836RvDYYgQZcZn0TC8qBAHaHa&pid=Api&P=0&h=180"
-          alt="twitter logo"
-        />
-        <img
-          src="https://tse1.mm.bing.net/th?id=OIP.bGPD-oClhpU4utiky9MnxgHaHa&pid=Api&P=0&h=180"
-          alt="facebook logo"
-        />
-        <img
-          src="https://tse4.mm.bing.net/th?id=OIP.FPjQ2OolWgNHEDLXkIf98AHaF2&pid=Api&P=0&h=180"
-          alt="linkedin logo"
-        />
+        <img src={INSTA_LOGO} alt="instagram logo" />
+        <img src={TW_LOGO} alt="twitter logo" />
+        <img src={FB_LOGO} alt="facebook logo" />
+        <img src={LINKEDIN_LOGO} alt="linkedin logo" />
       </div>
       <div className="footer-nav">
         <h4>Home</h4>
