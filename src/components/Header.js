@@ -3,10 +3,12 @@ import { LOGO_URL } from "../utils/constant";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
 const Header = () => {
-  const [toggleBtn, setToggleBtn] = useState("Login");
+  const [toggleBtn, setToggleBtn] = useState("Logout");
   const [mode, setMode] = useState("Dark Mode");
+  const [isLogeedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     console.log("login button toggled");
@@ -20,25 +22,36 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} style={linkStyle}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={"/about"}>About Us</Link>
+            <Link to={"/about"} style={linkStyle}>
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact Us</Link>
+            <Link to={"/contact"} style={linkStyle}>
+              Contact Us
+            </Link>
           </li>
           <li>Cart</li>
           <button
             className="login-out"
             onClick={() => {
-              toggleBtn == "Login"
-                ? setToggleBtn("Logout")
-                : setToggleBtn("Login");
+              if (toggleBtn == "Login") {
+                setToggleBtn("Logout");
+                setIsLoggedIn(false);
+              } else {
+                setToggleBtn("Login");
+                setIsLoggedIn(true);
+              }
             }}
           >
             {toggleBtn}
           </button>
+          {/* {isLogeedIn && <Login />} */}
           <button
             className="toggle-mode"
             onClick={() => {
@@ -59,6 +72,12 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+const linkStyle = {
+  color: "black", // Text color
+  textDecoration: "none", // Remove underline
+  fontWeight: "bold", // Set font weight to bold
 };
 
 export default Header;

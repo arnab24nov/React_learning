@@ -15,3 +15,9 @@ export const TW_LOGO =
 
 export const LINKEDIN_LOGO =
   "https://tse4.mm.bing.net/th?id=OIP.FPjQ2OolWgNHEDLXkIf98AHaF2&pid=Api&P=0&h=180";
+
+export const MENU_LOGO =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+
+export const MENU_URL =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.6489&lng=88.4278866&restaurantId=";
