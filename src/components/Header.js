@@ -10,9 +10,7 @@ const Header = () => {
   const [mode, setMode] = useState("Dark Mode");
   const [isLogeedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    console.log("login button toggled");
-  }, [toggleBtn, mode]);
+  useEffect(() => {}, [toggleBtn, mode]);
 
   return (
     <div className="header">
