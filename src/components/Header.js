@@ -4,11 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [toggleBtn, setToggleBtn] = useState("Logout");
   const [mode, setMode] = useState("Dark Mode");
   const [isLogeedIn, setIsLoggedIn] = useState(false);
+
+  const isOnline = useOnlineStatus();
 
   useEffect(() => {}, [toggleBtn, mode]);
 
@@ -19,6 +22,7 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <div>Online Status: {isOnline ? "🟢" : "🔴"}</div>
           <li>
             <Link to={"/"} style={linkStyle}>
               Home
@@ -32,6 +36,11 @@ const Header = () => {
           <li>
             <Link to={"/contact"} style={linkStyle}>
               Contact Us
+            </Link>
+          </li>
+          <li>
+            <Link to={"/grocary"} style={linkStyle}>
+              Grocary
             </Link>
           </li>
           <li>Cart</li>

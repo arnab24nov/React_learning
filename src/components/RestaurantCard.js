@@ -19,8 +19,7 @@ const RestaurentCard = (props) => {
   );
 };
 const linkStyle = {
-  color: "black", // Text color
-  textDecoration: "none", // Remove underline
-  // fontWeight: "bold", // Set font weight to bold
+  color: "black",
+  textDecoration: "none",
 };
 export default RestaurentCard;

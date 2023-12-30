@@ -3,11 +3,17 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import Status from "./Status";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const internetStatus = useOnlineStatus();
+  console.log("is Online?????", internetStatus);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,32 +27,15 @@ const Body = () => {
     setListOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+
     setFilteredRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
-  const fetchPostData = async (data) => {
-    try {
-      const response = await fetch(
-        "https://corsproxy.org/?https://www.swiggy.com/dapi/restaurants/list/update",
-        {
-          method: "POST", // or 'PUT'
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-
-      const responseText = await response.text();
-      const result = responseText ? JSON.parse(responseText) : null;
-      console.log("Success:", result);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  if (!internetStatus) {
+    return <Status />;
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
