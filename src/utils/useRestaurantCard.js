@@ -18,7 +18,6 @@ const useRestaurantCard = () => {
     );
   };
 
-  console.log("restaurantsInfo===>", restaurantsInfo);
   return restaurantsInfo;
 };
 

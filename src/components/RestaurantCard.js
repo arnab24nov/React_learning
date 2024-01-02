@@ -13,7 +13,7 @@ const RestaurantCard = (props) => {
           className="w-full h-40 rounded-xl mb-2"
           src={CDN_URL + cloudinaryImageId}
         />
-        <div class="absolute bottom-0 left-0 rounded-xl w-full h-2/3 bg-gradient-to-b from-transparent via-transparent to-black"></div>
+        <div className="absolute bottom-0 left-0 rounded-xl w-full h-2/3 bg-gradient-to-b from-transparent via-transparent to-black"></div>
       </div>
       <h1 className="overflow-ellipsis overflow-hidden whitespace-nowrap text-lg text-slate-600 font-bold ml-4">
         {name}
