@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LOGO_URL } from "../utils/constant";
+import { APP_LOGO_URL } from "../utils/constant";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -16,34 +16,28 @@ const Header = () => {
   useEffect(() => {}, [toggleBtn, mode]);
 
   return (
-    <div className="header">
+    <div className="flex justify-between items-center shadow-lg mb-4">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="app logo" />
+        <Link to={"/"}>
+          <img className="w-40" src={APP_LOGO_URL} alt="app logo" />
+        </Link>
       </div>
       <div className="nav-items">
-        <ul>
-          <div>Online Status: {isOnline ? "🟢" : "🔴"}</div>
-          <li>
-            <Link to={"/"} style={linkStyle}>
-              Home
-            </Link>
+        <ul className="flex p-4">
+          <li className="m-4">Online Status: {isOnline ? "🟢" : "🔴"}</li>
+          <li className="m-4 hover:scale-125 text-slate-600 font-bold">
+            <Link to={"/"}>Home</Link>
           </li>
-          <li>
-            <Link to={"/about"} style={linkStyle}>
-              About Us
-            </Link>
+          <li className="m-4 hover:scale-125 text-slate-600 font-bold">
+            <Link to={"/about"}>About Us</Link>
           </li>
-          <li>
-            <Link to={"/contact"} style={linkStyle}>
-              Contact Us
-            </Link>
+          <li className="m-4 hover:scale-125 text-slate-600 font-bold">
+            <Link to={"/contact"}>Contact Us</Link>
           </li>
-          <li>
-            <Link to={"/grocary"} style={linkStyle}>
-              Grocary
-            </Link>
+          <li className="m-4 hover:scale-125 text-slate-600 font-bold">
+            <Link to={"/grocary"}>Grocary</Link>
           </li>
-          <li>Cart</li>
+          <li className="m-4">Cart</li>
           <button
             className="login-out"
             onClick={() => {
@@ -59,7 +53,7 @@ const Header = () => {
             {toggleBtn}
           </button>
           {/* {isLogeedIn && <Login />} */}
-          <button
+          {/* <button
             className="toggle-mode"
             onClick={() => {
               if (mode === "Dark Mode") {
@@ -74,17 +68,11 @@ const Header = () => {
             }}
           >
             {mode}
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>
   );
-};
-
-const linkStyle = {
-  color: "black", // Text color
-  textDecoration: "none", // Remove underline
-  fontWeight: "bold", // Set font weight to bold
 };
 
 export default Header;

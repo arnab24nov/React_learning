@@ -1,4 +1,3 @@
-import { useState } from "react";
 import MenuCard from "./MenuCard";
 import { useParams } from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
@@ -15,10 +14,9 @@ const RestaurantMenu = () => {
     menu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
   return (
-    <div className="recommended-menu">
-      <div className="menu-for-restaurant"></div>
-      <h2>{title}</h2>
-      <div className="restaurant-menu-container">
+    <div className="w-[70%] mx-auto">
+      <h1 className="text-slate-700 font-bold text-3xl mb-8">{title}</h1>
+      <div className="">
         {itemCards.map((dt) => (
           <MenuCard key={dt.card.info.id} menuData={dt} />
         ))}

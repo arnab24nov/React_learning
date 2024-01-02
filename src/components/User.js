@@ -13,6 +13,7 @@ class UserClass extends React.Component {
         avatar_url:
           "https://tse4.mm.bing.net/th?id=OIP.TctatNGs7RN-Dfc3NZf91AAAAA&pid=Api&P=0&h=180",
       },
+      email: "",
     };
     console.log("First Child Constructor");
   }
@@ -24,6 +25,7 @@ class UserClass extends React.Component {
     console.log("json==>", json);
     this.setState({
       userInfo: json,
+      email: this.props.email,
     });
   }
 
@@ -35,15 +37,22 @@ class UserClass extends React.Component {
   }
   render() {
     console.log("First Child Render");
-    // const { email } = this.props;
     const { name, location, avatar_url } = this.state.userInfo;
+    const email = this.state.email;
     // debugger;
 
     return (
-      <div className="user-card">
-        <img src={avatar_url} />
-        <h3>Name: {name}</h3>
-        <h3>Location: {location}</h3>
+      <div className="m-5 p-5 shadow-lg bg-slate-100 flex flex-col items-center">
+        <img className="w-[200px] h-[200px] rounded-full" src={avatar_url} />
+        <h3 className="text-[24px] text-slate-600 font-semibold">
+          Name: {name}
+        </h3>
+        <h3 className="text-[20px] text-slate-600 font-semibold">
+          Location: {location}
+        </h3>
+        <h3 className="text-[20px] text-slate-600 font-semibold">
+          Email: {email}
+        </h3>
       </div>
     );
   }
