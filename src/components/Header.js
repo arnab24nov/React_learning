@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { APP_LOGO_URL } from "../utils/constant";
-import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [toggleBtn, setToggleBtn] = useState("Logout");
@@ -14,6 +14,9 @@ const Header = () => {
   const isOnline = useOnlineStatus();
 
   useEffect(() => {}, [toggleBtn, mode]);
+
+  // Subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between items-center shadow-lg mb-4">
@@ -37,7 +40,9 @@ const Header = () => {
           <li className="m-4 hover:scale-125 text-slate-600 font-bold">
             <Link to={"/grocary"}>Grocary</Link>
           </li>
-          <li className="m-4">Cart</li>
+          <Link to={"/cart"}>
+            <li className="m-4 font-bold">Cart ({cartItems.length})</li>
+          </Link>
           <button
             className="login-out"
             onClick={() => {

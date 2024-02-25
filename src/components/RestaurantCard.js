@@ -1,8 +1,6 @@
 import { CDN_URL } from "../utils/constant";
 
-const RestaurantCard = (props) => {
-  const { resData } = props;
-
+const RestaurantCard = ({ resData }) => {
   const { id, name, cuisines, avgRating, sla, cloudinaryImageId } =
     resData?.info;
 
@@ -36,8 +34,7 @@ const RestaurantCard = (props) => {
 
 // Higher Order Component.
 export const withOffereLabel = (RestaurantCard) => {
-  return (props) => {
-    const { resData } = props;
+  return ({ resData }) => {
     const { aggregatedDiscountInfoV3 } = resData.info;
 
     return (
@@ -45,7 +42,7 @@ export const withOffereLabel = (RestaurantCard) => {
         <label className="text-[20px] text-white font-extrabold z-10 absolute ml-[50px] mt-[125px]">
           {aggregatedDiscountInfoV3.header} {aggregatedDiscountInfoV3.subHeader}
         </label>
-        <RestaurantCard {...props} />
+        <RestaurantCard resData={resData} />
       </div>
     );
   };

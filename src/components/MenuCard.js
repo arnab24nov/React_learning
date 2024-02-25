@@ -1,8 +1,16 @@
+import { useDispatch } from "react-redux";
 import { MENU_LOGO } from "../utils/constant";
-const MenuCard = (props) => {
-  const { menuData } = props;
+import { addItem } from "../utils/cartSlice";
+
+const MenuCard = ({ menuData }) => {
   const { name, price, defaultPrice, imageId, ratings, description } =
     menuData?.card?.info;
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="flex justify-between items-center pt-[10px] pb-[30px] m-[20px auto] w-full border-b border-black last:border-b-0">
@@ -26,7 +34,10 @@ const MenuCard = (props) => {
             src={MENU_LOGO + imageId}
           />
         )}
-        <button className="bg-green-600 text-white px-8 py-1 rounded-md absolute top-[85%] left-[20%]">
+        <button
+          className="bg-green-600 text-white px-8 py-1 rounded-md absolute top-[85%] left-[20%]"
+          onClick={() => handleAddItem(menuData)}
+        >
           Add
         </button>
       </div>

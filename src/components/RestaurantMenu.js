@@ -7,16 +7,17 @@ import { useState } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const menu = useRestaurantMenu(resId);
+  console.log("menu===>", menu);
 
   const [visibleMenuItems, setVisibleMenuItems] = useState(null);
 
   if (menu === null) return <Shimmer />;
 
   const { name, areaName, costForTwoMessage, cuisines } =
-    menu?.cards[0]?.card?.card?.info;
+    menu?.cards[2]?.card?.card?.info;
 
   const filteredCards =
-    menu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((el) => {
+    menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((el) => {
       return (
         el.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -38,7 +39,11 @@ const RestaurantMenu = () => {
           key={res?.card?.card?.title}
           data={res?.card?.card}
           resData={index === visibleMenuItems ? true : false}
-          setVisibleMenuItems={() => setVisibleMenuItems(index)}
+          setVisibleMenuItems={() =>
+            setVisibleMenuItems((prevIndex) =>
+              prevIndex === index ? null : index
+            )
+          }
         />
       ))}
     </div>
